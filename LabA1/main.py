@@ -30,7 +30,7 @@ def kubpar(n):
     return pairs
 
 # Starta laborationen 
-def start():
+def main():
     print()
     start = input("Starta uppgift 1 eller 2? 1/2 ")
     if start.isdigit() and int(start) == 1:
@@ -45,4 +45,5 @@ def start():
     else:
         print("Error: Indata kan endast vara 1 eller 2")
 
-start()
+if __name__ == "__main__":
+    main() 
