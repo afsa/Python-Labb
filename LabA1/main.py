@@ -2,7 +2,7 @@
 '''
 Created on 1 okt 2013
 
-@author: MJ
+@author: MJ and YJ
 '''
 
 # Beräkna den kubiska summan av talen a och b
@@ -38,7 +38,7 @@ def minRamanujan(m):
     while True:
         dummy = kubpar(i)
         
-        if dummy:
+        if len(dummy) > 1:
             output.append((i, dummy))
             antal += 1
         

@@ -2,7 +2,7 @@
 '''
 Created on 1 okt 2013
 
-@author: MJ
+@author: MJ and YJ
 '''
 import time
 
