@@ -29,10 +29,31 @@ def kubpar(n):
     
     return pairs
 
+def minRamanujan(m):
+    output = []
+    
+    i = 0
+    antal = 0
+    
+    while True:
+        dummy = kubpar(i)
+        
+        if dummy:
+            output.append((i, dummy))
+            antal += 1
+        
+        if antal == m:
+            break 
+        
+        i += 1
+    
+    return output
+        
+
 # Starta laborationen 
 def main():
     print()
-    start = input("Starta uppgift 1 eller 2? 1/2 ")
+    start = input("Starta uppgift 1, 2 eller 3? ")
     if start.isdigit() and int(start) == 1:
         calculateSum()
     elif start.isdigit() and int(start) == 2:
@@ -41,7 +62,16 @@ def main():
         if theSum.isdigit():
             print(kubpar(int(theSum)))
         else:
-            print("Error: Summan måste vara ett tal.")      
+            print("Error: Summan måste vara ett tal.")  
+    elif start.isdigit() and int(start) == 3:
+        print()
+        m = input("Hitta de m första Ramanujan tal. m= ")
+        if m.isdigit():
+            lists = minRamanujan(int(m))
+            for foo in lists:
+                print(foo)
+        else:
+            print("Error: Summan måste vara ett tal.")
     else:
         print("Error: Indata kan endast vara 1 eller 2")
 
