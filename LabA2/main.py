@@ -4,7 +4,6 @@ Created on 1 okt 2013
 
 @author: MJ and YJ
 '''
-import time
 
 # Bygg en sträng med utseende av en kub
 def getRect(marginLeft, height, width, char):
