@@ -26,11 +26,12 @@ class secretLanguages:
         if languageNr.isdigit() and int(languageNr) > 0 and int(languageNr) < 8: #Validate input
             languageNr = int(languageNr);
             if languageNr == 7: #If exit
+                print("Applikationen avslutad.");
                 exit();
             text = input("Skriv din mening: ");
             print(self.languages[languageNr-1][1] + ": " + self.languages[languageNr-1][2](text)); #Run language
         else:
-            print("\033[93m" + "Error: Invärde måste vara en siffra mellan 1 och 7"); #Invalid input
+            print("Error: Invärde måste vara en siffra mellan 1 och 7"); #Invalid input
             
         if loop:
             self.__init__(); #Do a loop
