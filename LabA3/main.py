@@ -8,6 +8,7 @@ Created on 28 okt 2013
 #Main class with UI and secret languages methods
 class secretLanguages:
     vowels = "aeiouyåäöAEIOUYÅÄÖ"; #All vowels in the swedish alphabet.
+    exceptions = " .,!?:;#%&$£@-_+*/";
     languages = None;
     
     #Menu toggles if a menu should be used and loop toggles if the script should loop
@@ -59,7 +60,7 @@ class secretLanguages:
         tempList = list(text);
         
         for i in tempList:
-            if i in self.vowels or i == " ":
+            if i in self.vowels or i in self.exceptions:
                 output += i;
             else:
                 output += "O" + i.lower() + "o" if i.isupper() else "o" + i + "o"; #Add O if vowel is uppercase else o
