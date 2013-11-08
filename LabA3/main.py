@@ -17,21 +17,22 @@ class secretLanguages:
             return True;
         
         #Create list of languages
-        self.languages  = [[1, "Viskspråket", self.whisper], [2, "Rövarspråket", self.pirate],
-                           [3, "Fyllespråket", self.drunk], [4, "Bebisspråket", self.baby],
-                           [5, "Allspråket", self.all], [6, "Fikonspråket", self.fig], [7, "Avsluta"]];
+        self.languages  = ((1, "Viskspråket", self.whisper), (2, "Rövarspråket", self.pirate),
+                           (3, "Fyllespråket", self.drunk), (4, "Bebisspråket", self.baby),
+                           (5, "Allspråket", self.all), (6, "Fikonspråket", self.fig), (7, "Avsluta"));
         
         print("\nVilket språk vill du använda?");
         print(self.createList());
         languageNr = input();
-        if languageNr.isdigit() and int(languageNr) > 0 and int(languageNr) < 8: #Validate input
+        try:
             languageNr = int(languageNr);
+            assert 0 < languageNr < 8;
             if languageNr == 7: #If exit
                 print("Applikationen avslutad.");
-                exit();
+                return;
             text = input("Skriv din mening: ");
             print(self.languages[languageNr-1][1] + ": " + self.languages[languageNr-1][2](text)); #Run language
-        else:
+        except:
             print("Error: Invärde måste vara en siffra mellan 1 och 7"); #Invalid input
             
         if loop:
@@ -63,7 +64,7 @@ class secretLanguages:
             if i in self.vowels or i in self.exceptions:
                 output += i;
             else:
-                output += "O" + i.lower() + "o" if i.isupper() else "o" + i + "o"; #Add O if vowel is uppercase else o
+                output += i + "o" + i.lower(); #Add O if vowel is uppercase else o
         return output;
     
     #Drunk language
