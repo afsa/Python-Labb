@@ -43,6 +43,8 @@ if __name__ == "__main__":
     try:
         m = int(input("M= "));
         n = int(input("N= "));
+        print("Print sorted list? y/n");
+        printList = input();
         
         queue = Queue();
         
@@ -55,11 +57,13 @@ if __name__ == "__main__":
         previous = 0;
         
         while sortedQueue.hasNext():
-            temp = sortedQueue.get();
+            temp = sortedQueue.get();            
             if previous > temp:
                 raise SortFailedException;
             else:
                 previous = temp;
+                if printList == "y":
+                    print(temp);
         
         print("Success");
     except(ValueError):

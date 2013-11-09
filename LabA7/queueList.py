@@ -14,7 +14,7 @@ class Queue():
         self.queue.append(x);
     
     def get(self):
-        return self.queue.pop() if not self.isEmpty() else None;
+        return self.queue.pop(0) if not self.isEmpty() else None;
     
     def isEmpty(self):
         return len(self.queue) == 0;
