@@ -9,3 +9,4 @@ def getChildren(parent, wordList):
     return;
 
 #Search for ab?, a?c, ?bc in list.
+#test
