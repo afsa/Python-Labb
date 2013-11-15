@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 
 import sys
 import time
@@ -51,7 +51,7 @@ def the_filter (lista, search_func, change_func):
     if not lista:
         return [];
     elif search_func(change_func(lista[0]), lista[1:]):
-        lst =  the_filter(lista[1:], search_func, change_func);
+        lst = the_filter(lista[1:], search_func, change_func);
         return [(lista[0] ,change_func(lista[0]))] + lst;
     else:
         return the_filter(lista[1:], search_func, change_func);
@@ -65,23 +65,75 @@ def binparsok(lista):
 def binrevsok(lista):
     return the_filter (lista, binary_search, reverse);
 
+def create_card (var):
+    card = []
+    for i in range(var):
+        card.append(i);
+    return card
+
+def rifflar(lst, card, times=1):
+    tmp = [];
+    l = len(lst);
+    for i in range(l//2):
+        tmp.append(lst[i]);
+        tmp.append(lst[i+l//2]);
+    if tmp == card: 
+        return times;
+    else:
+        return rifflar(tmp, card, times+1);
+
+def show_card(ordlst):
+    c = create_card(52);
+    return (rifflar(c, c));
+
+def get_input(func):
+    ord = input("Write the word you want to search: ");
+    if func(ord, ordlst):
+        print (ord + " exists");
+    else:
+        print (ord + " doesn't exist");
+
+def test(ordlst):
+    word = "abcde";
+    ordet = "ajour";
+    ordet2 = "banan";
+    print (docking(word));
+    print (reverse(word));
+    linsok(ordlst, ordet);
+    linsok(ordlst, ordet2);
+    print (linparsok(ordlst));
+    print (binparsok(ordlst));
+    print (binrevsok(ordlst));
+    return "Test complete";
+        
 def main():
-    print ();
-
-# def test():
-#     word = "abcde";
-#     ordet = "ajour";
-#     ordet2 = "banan";
-#     print (docking(word));
-#     print (reverse(word));
-#     initial();
-#     linsok(ordlst, ordet);
-#     linsok(ordlst, ordet2);
-#     print (linparsok(ordlst));
-#     print (binparsok(ordlst));
-#     print (binrevsok(ordlst));
-
-# test();
+    try:
+        lst = [[linear_search, True], [binary_search, True], 
+               [linparsok, False], [binparsok, False], [binrevsok, False],
+               [show_card, False], [test, False]];
+        print("Choose what do you want to do:");
+        print("1. Search if a word exist with linear search")
+        print("2. Search if a word exist with binary search")
+        print("3. Find all the word-pairs with linear search")
+        print("4. Find all the word-pairs with binary search")
+        print("5. Find all the reverse word-pairs with binary search")
+        print("6. Find card thing")
+        print("7. Run the test")
+        print("8. Quit")
+        ctrl = int(input());
+    except: 
+        print("ERROR\nNaN")
+    if ctrl == 8:
+        return 1;
+    elif lst[ctrl-1][1]:
+        get_input(lst[ctrl-1][0]);
+        return 0;
+    else:
+        print (lst[ctrl-1][0](ordlst));
+        return 0;
 
 if __name__ == "__main__":
-    main();
+    initial();
+    while(1):
+        if main():
+            break;
