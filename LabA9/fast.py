@@ -90,7 +90,6 @@ class WideSearch:
             
             a,b,c = self.findLongest(target, True);
             usedTargets.add(target);
-            usedTargets = usedTargets | c;
             
             if b > longest:
                 longest = b;
@@ -109,12 +108,15 @@ class WideSearch:
         return 1 + (self.getLength(self.hierarchy[word]) if self.hierarchy[word] else 0);
     
 test = WideSearch();
-print(test.findLongest("fan"));
-print(test.findLongest("ido"))
-'''
+print(test.search("dum", "vis"));
+print(test.search("blå", "röd"));
+print(test.search("fan", "gud"));
+
+print(test.findLongest("bla"));
+print(test.findLongest("vis"));
+
 timestamp = time.time();
 data = test.getLongestInList();
 print("Maximum jumps", data[1])
 print(data[0]);
 print("It took", int(time.time() - timestamp), "s to run");
-'''
