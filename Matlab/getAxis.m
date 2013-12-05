@@ -1,8 +1,12 @@
-function [ area ] = getAxis( x , y )
+function [ area ] = getAxis( x , y, m )
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
-area = [[min(x) max(x)] + peak2peak(x).*[-0.1 0.1] [min(y) max(y)] + peak2peak(y).*[-0.1 0.1]];
+if nargin == 2
+    m = 0.1;
+end
+
+area = [[min(x) max(x)] + abs(peak2peak(x)).*[-1 1].*m [min(y) max(y)] + abs(peak2peak(y)).*[-1 1].*m];
 
 end
 
